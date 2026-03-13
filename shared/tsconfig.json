@@ -12,9 +12,11 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "noEmit": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
     "baseUrl": "."
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }
