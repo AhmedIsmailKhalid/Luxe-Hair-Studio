@@ -5,6 +5,32 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./schemas/service.schema.js": {
+      "import": "./dist/schemas/service.schema.js",
+      "types": "./dist/schemas/service.schema.d.ts"
+    },
+    "./schemas/staff.schema.js": {
+      "import": "./dist/schemas/staff.schema.js",
+      "types": "./dist/schemas/staff.schema.d.ts"
+    },
+    "./schemas/booking.schema.js": {
+      "import": "./dist/schemas/booking.schema.js",
+      "types": "./dist/schemas/booking.schema.d.ts"
+    },
+    "./types/api.types.js": {
+      "import": "./dist/types/api.types.js",
+      "types": "./dist/types/api.types.d.ts"
+    },
+    "./types/booking.types.js": {
+      "import": "./dist/types/booking.types.js",
+      "types": "./dist/types/booking.types.d.ts"
+    }
+  },
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit"
