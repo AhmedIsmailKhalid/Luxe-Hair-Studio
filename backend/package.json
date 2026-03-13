@@ -17,6 +17,7 @@
     "db:seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "shared": "file:../shared",
     "@prisma/client": "^5.10.2",
     "@supabase/supabase-js": "^2.99.1",
     "cors": "^2.8.5",
