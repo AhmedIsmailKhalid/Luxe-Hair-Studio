@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { fetchServices, fetchServiceById } from '../lib/services.api';
-import { getErrorMessage } from '../lib/api';
 import { MOCK_SERVICES } from '../lib/mockData';
 import type { Service } from '../../../shared/src/schemas/service.schema';
 
