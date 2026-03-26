@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { fetchStaff, fetchStaffById, fetchStaffForService } from '../lib/staff.api';
-import { getErrorMessage } from '../lib/api';
+import { MOCK_STAFF } from '../lib/mockData';
 import type { StaffWithServices } from '../lib/staff.api';
 
 export interface UseStaffResult {
   staff: StaffWithServices[];
   isLoading: boolean;
   error: string | null;
+  isUsingMockData: boolean;
   refetch: () => void;
 }
 
@@ -14,6 +15,7 @@ export function useStaff(): UseStaffResult {
   const [staff, setStaff] = useState<StaffWithServices[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isUsingMockData, setIsUsingMockData] = useState(false);
   const [trigger, setTrigger] = useState(0);
 
   useEffect(() => {
@@ -22,11 +24,16 @@ export function useStaff(): UseStaffResult {
     async function load() {
       setIsLoading(true);
       setError(null);
+      setIsUsingMockData(false);
+
       try {
         const data = await fetchStaff();
         if (!cancelled) setStaff(data);
       } catch (err) {
-        if (!cancelled) setError(getErrorMessage(err));
+        if (!cancelled) {
+          setStaff(MOCK_STAFF);
+          setIsUsingMockData(true);
+        }
       } finally {
         if (!cancelled) setIsLoading(false);
       }
@@ -40,6 +47,7 @@ export function useStaff(): UseStaffResult {
     staff,
     isLoading,
     error,
+    isUsingMockData,
     refetch: () => setTrigger(t => t + 1),
   };
 }
@@ -62,11 +70,17 @@ export function useStaffForService(serviceId: string | null): UseStaffForService
     async function load() {
       setIsLoading(true);
       setError(null);
+
       try {
         const data = await fetchStaffForService(serviceId!);
         if (!cancelled) setStaff(data);
       } catch (err) {
-        if (!cancelled) setError(getErrorMessage(err));
+        if (!cancelled) {
+          const filtered = MOCK_STAFF.filter(s =>
+            s.staffServices.some(ss => ss.serviceId === serviceId)
+          );
+          setStaff(filtered);
+        }
       } finally {
         if (!cancelled) setIsLoading(false);
       }
@@ -97,11 +111,15 @@ export function useStaffMember(id: string | null): UseStaffMemberResult {
     async function load() {
       setIsLoading(true);
       setError(null);
+
       try {
         const data = await fetchStaffById(id!);
         if (!cancelled) setMember(data);
       } catch (err) {
-        if (!cancelled) setError(getErrorMessage(err));
+        if (!cancelled) {
+          const found = MOCK_STAFF.find(s => s.id === id) ?? null;
+          setMember(found);
+        }
       } finally {
         if (!cancelled) setIsLoading(false);
       }

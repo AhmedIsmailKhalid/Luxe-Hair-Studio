@@ -1,0 +1,141 @@
+import type { StaffWithServices } from '@/lib/staff.api'
+
+export const MOCK_SERVICES = [
+  {
+    id: 'mock-svc-1',
+    name: 'Signature Haircut',
+    description:
+      'A precision cut tailored to your face shape and lifestyle. Includes consultation, shampoo, cut, and blow-dry.',
+    durationMinutes: 60,
+    price: 85,
+    category: 'haircut' as const,
+    isActive: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'mock-svc-2',
+    name: 'Full Colour',
+    description:
+      'All-over colour using premium professional products. Consultation included to achieve your perfect shade.',
+    durationMinutes: 120,
+    price: 150,
+    category: 'color' as const,
+    isActive: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'mock-svc-3',
+    name: 'Balayage & Highlights',
+    description:
+      'Hand-painted highlights for a natural, sun-kissed finish. Fully customised to your hair length and tone.',
+    durationMinutes: 150,
+    price: 195,
+    category: 'color' as const,
+    isActive: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'mock-svc-4',
+    name: 'Keratin Treatment',
+    description:
+      'Smoothing treatment that eliminates frizz and adds lasting shine. Results last up to 4 months.',
+    durationMinutes: 180,
+    price: 250,
+    category: 'treatment' as const,
+    isActive: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'mock-svc-5',
+    name: 'Deep Conditioning',
+    description:
+      'Intensive moisture treatment to restore health and elasticity to dry or damaged hair.',
+    durationMinutes: 45,
+    price: 65,
+    category: 'treatment' as const,
+    isActive: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'mock-svc-6',
+    name: 'Bridal Hair',
+    description:
+      'Full bridal styling including trial run. Updos, waves, braids — crafted for your most important day.',
+    durationMinutes: 120,
+    price: 220,
+    category: 'styling' as const,
+    isActive: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'mock-svc-7',
+    name: 'Blowout & Style',
+    description:
+      'Professional blow-dry and style for any occasion. Straight, wavy, or voluminous — your choice.',
+    durationMinutes: 45,
+    price: 55,
+    category: 'styling' as const,
+    isActive: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'mock-svc-8',
+    name: 'Scalp Treatment',
+    description:
+      'Targeted treatment for scalp health — addresses dryness, oiliness, and sensitivity with professional-grade serums.',
+    durationMinutes: 60,
+    price: 90,
+    category: 'treatment' as const,
+    isActive: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+]
+
+export const MOCK_STAFF: StaffWithServices[] = [
+  {
+    id: 'mock-staff-1',
+    name: 'Sophia Reyes',
+    email: 'sophia@luxehairstudio.com',
+    phone: '+1 (555) 123-4567',
+    bio: 'With over 10 years of experience in precision cutting and colour artistry, Sophia brings a keen eye for detail and a passion for transformative styles. She specialises in balayage, creative colour, and bridal hair.',
+    avatarUrl: undefined,
+    specialties: ['Balayage', 'Creative Colour', 'Bridal Hair', 'Precision Cuts'],
+    isActive: true,
+    staffServices: [
+      { id: 'mock-ss-1-1', serviceId: MOCK_SERVICES[0].id, service: MOCK_SERVICES[0] },
+      { id: 'mock-ss-1-2', serviceId: MOCK_SERVICES[1].id, service: MOCK_SERVICES[1] },
+      { id: 'mock-ss-1-3', serviceId: MOCK_SERVICES[2].id, service: MOCK_SERVICES[2] },
+      { id: 'mock-ss-1-4', serviceId: MOCK_SERVICES[3].id, service: MOCK_SERVICES[3] },
+      { id: 'mock-ss-1-5', serviceId: MOCK_SERVICES[4].id, service: MOCK_SERVICES[4] },
+      { id: 'mock-ss-1-6', serviceId: MOCK_SERVICES[5].id, service: MOCK_SERVICES[5] },
+      { id: 'mock-ss-1-7', serviceId: MOCK_SERVICES[6].id, service: MOCK_SERVICES[6] },
+      { id: 'mock-ss-1-8', serviceId: MOCK_SERVICES[7].id, service: MOCK_SERVICES[7] },
+    ],
+  },
+  {
+    id: 'mock-staff-2',
+    name: 'Marcus Chen',
+    email: 'marcus@luxehairstudio.com',
+    phone: '+1 (555) 234-5678',
+    bio: "Marcus is a master stylist known for his architectural cuts and technical expertise in men's and women's styling. His calm, consultative approach puts every client at ease from the first appointment.",
+    avatarUrl: undefined,
+    specialties: ['Architectural Cuts', 'Keratin Treatments', 'Men\'s Styling', 'Scalp Care'],
+    isActive: true,
+    staffServices: [
+      { id: 'mock-ss-2-1', serviceId: MOCK_SERVICES[0].id, service: MOCK_SERVICES[0] },
+      { id: 'mock-ss-2-2', serviceId: MOCK_SERVICES[1].id, service: MOCK_SERVICES[1] },
+      { id: 'mock-ss-2-3', serviceId: MOCK_SERVICES[3].id, service: MOCK_SERVICES[3] },
+      { id: 'mock-ss-2-4', serviceId: MOCK_SERVICES[4].id, service: MOCK_SERVICES[4] },
+      { id: 'mock-ss-2-5', serviceId: MOCK_SERVICES[6].id, service: MOCK_SERVICES[6] },
+      { id: 'mock-ss-2-6', serviceId: MOCK_SERVICES[7].id, service: MOCK_SERVICES[7] },
+    ],
+  },
+]

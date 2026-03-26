@@ -7,8 +7,9 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Separator } from '@/components/ui/separator';
 import { formatPrice, formatDuration } from '@/lib/utils';
 import { useServices } from '@/hooks/useServices';
-import type { Service } from '../../../../shared/src/schemas/service.schema';
 import { SEO } from '@/components/common/SEO';
+import SuspendedBanner from '@/components/common/SuspendedBanner';
+import type { Service } from '../../../../shared/src/schemas/service.schema';
 
 type Category = 'all' | 'haircut' | 'color' | 'treatment' | 'styling' | 'other';
 
@@ -80,11 +81,10 @@ function ServiceSkeleton() {
 }
 
 export function ServicesPage() {
-  const { services, isLoading, error } = useServices();
+  const { services, isLoading, error, isUsingMockData } = useServices();
   const [activeCategory, setActiveCategory] = useState<Category>('all');
 
   const categories = ['all', ...Array.from(new Set(services.map(s => s.category)))] as Category[];
-
   const filtered = activeCategory === 'all'
     ? services
     : services.filter(s => s.category === activeCategory);
@@ -96,6 +96,9 @@ export function ServicesPage() {
         description="Browse our full range of premium hair services — haircuts, colour, balayage, treatments, styling and more. Transparent pricing. Book online instantly."
         canonical="/services"
       />
+
+      {isUsingMockData && <SuspendedBanner />}
+
       <div className="container space-y-10">
         {/* ─── Header ─────────────────────────────────────────────────────────── */}
         <div className="text-center space-y-3 max-w-xl mx-auto">

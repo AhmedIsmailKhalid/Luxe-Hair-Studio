@@ -6,8 +6,9 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Separator } from '@/components/ui/separator';
 import { getInitials } from '@/lib/utils';
 import { useStaff } from '@/hooks/useStaff';
-import type { StaffWithServices } from '@/lib/staff.api';
 import { SEO } from '@/components/common/SEO';
+import SuspendedBanner from '@/components/common/SuspendedBanner';
+import type { StaffWithServices } from '@/lib/staff.api';
 
 function StaffCard({ member }: { member: StaffWithServices }) {
   const services = member.staffServices.map(ss => ss.service);
@@ -37,7 +38,6 @@ function StaffCard({ member }: { member: StaffWithServices }) {
               {member.bio}
             </p>
           )}
-
           {member.specialties.length > 0 && (
             <div className="space-y-2">
               <p className="text-xs font-semibold text-foreground uppercase tracking-wide">
@@ -52,7 +52,6 @@ function StaffCard({ member }: { member: StaffWithServices }) {
               </div>
             </div>
           )}
-
           {services.length > 0 && (
             <div className="space-y-2">
               <p className="text-xs font-semibold text-foreground uppercase tracking-wide">
@@ -67,9 +66,7 @@ function StaffCard({ member }: { member: StaffWithServices }) {
               </div>
             </div>
           )}
-
           <Separator />
-
           <Button asChild variant="luxe" size="sm" className="w-full">
             <Link to={`/book?staffId=${member.id}`}>
               Book with {member.name.split(' ')[0]}
@@ -101,7 +98,7 @@ function StaffSkeleton() {
 }
 
 export function TeamPage() {
-  const { staff, isLoading, error } = useStaff();
+  const { staff, isLoading, error, isUsingMockData } = useStaff();
 
   return (
     <div className="py-12">
@@ -110,6 +107,9 @@ export function TeamPage() {
         description="Meet the Luxe Hair Studio team — experienced, passionate stylists dedicated to bringing your vision to life. View their specialties and book directly."
         canonical="/team"
       />
+
+      {isUsingMockData && <SuspendedBanner />}
+
       <div className="container space-y-10">
         {/* ─── Header ─────────────────────────────────────────────────────────── */}
         <div className="text-center space-y-3 max-w-xl mx-auto">
