@@ -22,6 +22,9 @@ FROM node:22-alpine AS runner
 
 WORKDIR /app
 
+# Required for Prisma to connect over SSL on Alpine
+RUN apk add --no-cache openssl
+
 ENV NODE_ENV=production
 
 COPY package.json package-lock.json ./
@@ -32,8 +35,6 @@ RUN npm ci --workspace=backend --workspace=shared --omit=dev --ignore-scripts
 
 COPY --from=builder /app/shared/dist ./shared/dist
 COPY --from=builder /app/backend/dist ./backend/dist
-
-# Prisma client is hoisted to root node_modules by npm workspaces
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 
