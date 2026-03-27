@@ -3,6 +3,9 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
+# Need OpenSSL in builder too for prisma generate to work correctly
+RUN apk add --no-cache openssl
+
 COPY package.json package-lock.json ./
 COPY backend/package.json ./backend/
 COPY shared/package.json ./shared/
@@ -22,7 +25,6 @@ FROM node:22-alpine AS runner
 
 WORKDIR /app
 
-# Required for Prisma to connect over SSL on Alpine
 RUN apk add --no-cache openssl
 
 ENV NODE_ENV=production
