@@ -76,7 +76,7 @@ This project is what a purpose-built alternative looks like: a booking system de
 
 ## Architecture
 
-![Luxe Architectural Diagram](Luxe-Architectural-Diagram.png)
+![Luxe Architectural Diagram](assets/Luxe-Architectural-Diagram.png)
 
 At a high level: the React frontend is deployed on Vercel and communicates with an Express REST API on Render via authenticated Axios requests. The backend validates all inputs with Zod, applies rate limiting, sanitises client data, and persists to a PostgreSQL database via Prisma. Supabase handles both the database hosting and JWT-based admin authentication. Resend handles transactional email on a fire-and-forget basis.
 
