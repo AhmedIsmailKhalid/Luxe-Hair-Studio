@@ -32,12 +32,13 @@ RUN npm ci --workspace=backend --workspace=shared --omit=dev --ignore-scripts
 
 COPY --from=builder /app/shared/dist ./shared/dist
 COPY --from=builder /app/backend/dist ./backend/dist
-COPY --from=builder /app/backend/node_modules/.prisma ./backend/node_modules/.prisma
+
+# Prisma client is hoisted to root node_modules by npm workspaces
 COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 
 COPY backend/prisma ./backend/prisma
 
 EXPOSE 3001
 
-# Corrected path — tsc mirrors full directory structure into dist/
 CMD ["node", "backend/dist/backend/src/index.js"]
