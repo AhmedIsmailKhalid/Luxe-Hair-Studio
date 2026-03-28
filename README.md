@@ -10,9 +10,9 @@ A production-deployed, end-to-end appointment booking platform built for a premi
 
 ## The Problem
 
-Small service businesses — salons, spas, studios — typically land in one of two situations: they're paying for a bloated SaaS platform that doesn't fit their brand, or they're still taking bookings over the phone and Instagram DMs. Neither is great. Generic platforms force businesses into someone else's UX. Manual bookings don't scale, create double-booking risk, and send no confirmations.
+Small service businesses such as salons, spas, studios etc. typically land in one of two situations: they're paying for a bloated SaaS platform that doesn't fit their brand, or they're still taking bookings over the phone and Instagram DMs. Neither is great. Generic platforms force businesses into someone else's UX. Manual bookings don't scale, create double-booking risk, and send no confirmations.
 
-This project is what a purpose-built alternative looks like: a booking system designed around how a real hair salon actually operates — multiple stylists, each with their own schedule and service specialisations, with customers guided through a clear step-by-step flow and automatically notified by email.
+This project is what a purpose-built alternative looks like: a booking system designed around how a real hair salon actually operates, overcoming these problems with multiple stylists, each with their own schedule and service specialisations, with customers guided through a clear step-by-step flow and automatically notified by email.
 
 ---
 
