@@ -3,7 +3,7 @@
 A production-deployed, end-to-end appointment booking platform built for a premium hair salon. This project covers the full product lifecycle — database design, REST API architecture, customer-facing UI, transactional email, and a secure admin dashboard — deployed and live.
 
 **Live site:** [luxe-hair-studio-frontend.vercel.app](https://luxe-hair-studio-frontend.vercel.app)  
-**API health:** [luxe-hair-studio-api.onrender.com/health](https://luxe-hair-studio-api.onrender.com/health)  
+**API health:** [https://luxe-hair-studio-backend-334263295854.us-central1.run.app/health](https://luxe-hair-studio-backend-334263295854.us-central1.run.app/health)  
 **Repo:** [github.com/AhmedIsmailKhalid/Luxe-Hair-Studio](https://github.com/AhmedIsmailKhalid/Luxe-Hair-Studio)
 
 ---
@@ -69,7 +69,7 @@ This project is what a purpose-built alternative looks like: a booking system de
 | Logging | Winston |
 | Shared validation | Zod (monorepo shared package) |
 | Frontend deployment | Vercel |
-| Backend deployment | Render |
+| Backend deployment | Google Cloud Run |
 | Uptime monitoring | UptimeRobot |
 
 ---
@@ -78,7 +78,7 @@ This project is what a purpose-built alternative looks like: a booking system de
 
 ![Luxe Architectural Diagram](assets/Luxe-Architectural-Diagram.png)
 
-At a high level: the React frontend is deployed on Vercel and communicates with an Express REST API on Render via authenticated Axios requests. The backend validates all inputs with Zod, applies rate limiting, sanitises client data, and persists to a PostgreSQL database via Prisma. Supabase handles both the database hosting and JWT-based admin authentication. Resend handles transactional email on a fire-and-forget basis.
+At a high level: the React frontend is deployed on Vercel and communicates with an Express REST API on Google Cloud Run via authenticated Axios requests. The backend validates all inputs with Zod, applies rate limiting, sanitises client data, and persists to a PostgreSQL database via Prisma. Supabase handles both the database hosting and JWT-based admin authentication. Resend handles transactional email on a fire-and-forget basis.
 
 ---
 
@@ -165,9 +165,6 @@ npm run dev
 | Service | Platform | URL |
 |---|---|---|
 | Frontend | Vercel | luxe-hair-studio-frontend.vercel.app |
-| Backend | Render (free tier) | luxe-hair-studio-api.onrender.com |
+| Backend | Google Cloud Run | luxe-hair-studio-backend-334263295854.us-central1.run.app |
 | Database | Supabase | Hosted PostgreSQL (session pooler) |
 | Email | Resend | bookings@fueontaame.resend.app |
-| Uptime monitoring | UptimeRobot | Pings /health every 14 min |
-
-> The backend runs on Render's free tier which spins down after inactivity. UptimeRobot pings `/health` every 14 minutes to prevent cold starts.
