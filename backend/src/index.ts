@@ -15,6 +15,7 @@ import { apiLimiter, bookingLimiter } from './middleware/rateLimiter.js';
 
 
 const app = express();
+app.set('trust proxy', 1); // Trust Cloud Run's proxy layer
 
 // ─── Security & Parsing Middleware ───────────────────────────────────────────
 app.use(helmet());
